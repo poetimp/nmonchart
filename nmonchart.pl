@@ -13,8 +13,6 @@
 #------------------------------------------------------------------------------------------
 
 use strict;
-use TMC::Monolith;
-use TMC::DoDie qw(do_die do_warn);
 use List::Util qw[min max];
 use Scalar::Util qw(looks_like_number);
 use POSIX qw(strftime);
@@ -32,12 +30,6 @@ sub buildConfig();
 sub buildChart($$$@);
 sub buildButton($$$);
 sub printPageMiddle();
-#-----------------------------------------------------------------------------------------------
-# Instantiate communication modules
-#-----------------------------------------------------------------------------------------------
-my $monolith = new TMC::Monolith;
-my $do_die   = new TMC::DoDie({emailList =>'paul.lemmons@tmcaz.com'});
-
 #-----------------------------------------------------------------------------------------------
 # Configuration Variables
 #-----------------------------------------------------------------------------------------------
@@ -477,8 +469,8 @@ sub consumeNmonData()
    #---------------------------------------------------------------------------------------------------
    # If we have a valid input fie, the following variables will have values 
    #---------------------------------------------------------------------------------------------------
-   if (!defined($globalData{'host'})) {do_die('unable to glean hostname from input file')}
-   if (!defined($globalData{'OS'}))   {do_die('unable to glean hosttype from input file')}
-   if (!defined($globalData{'date'})) {do_die('unable to glean start date from input file')}
-   if (!defined($globalData{'time'})) {do_die('unable to glean start time from input file')}
+   if (!defined($globalData{'host'})) {die('unable to glean hostname from input file')}
+   if (!defined($globalData{'OS'}))   {die('unable to glean hosttype from input file')}
+   if (!defined($globalData{'date'})) {die('unable to glean start date from input file')}
+   if (!defined($globalData{'time'})) {die('unable to glean start time from input file')}
 }
